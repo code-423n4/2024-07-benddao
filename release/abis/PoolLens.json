@@ -1,0 +1,1318 @@
+[
+  {
+    "type": "constructor",
+    "inputs": [
+      {
+        "name": "moduleGitCommit_",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "getAssetAuctionConfig",
+    "inputs": [
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "asset",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "redeemThreshold",
+        "type": "uint16",
+        "internalType": "uint16"
+      },
+      {
+        "name": "bidFineFactor",
+        "type": "uint16",
+        "internalType": "uint16"
+      },
+      {
+        "name": "minBidFineFactor",
+        "type": "uint16",
+        "internalType": "uint16"
+      },
+      {
+        "name": "auctionDuration",
+        "type": "uint40",
+        "internalType": "uint40"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getAssetConfigCap",
+    "inputs": [
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "asset",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "supplyCap",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "borrowCap",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "yieldCap",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getAssetConfigFlag",
+    "inputs": [
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "asset",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "isActive",
+        "type": "bool",
+        "internalType": "bool"
+      },
+      {
+        "name": "isFrozen",
+        "type": "bool",
+        "internalType": "bool"
+      },
+      {
+        "name": "isPaused",
+        "type": "bool",
+        "internalType": "bool"
+      },
+      {
+        "name": "isBorrowingEnabled",
+        "type": "bool",
+        "internalType": "bool"
+      },
+      {
+        "name": "isYieldEnabled",
+        "type": "bool",
+        "internalType": "bool"
+      },
+      {
+        "name": "isYieldPaused",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getAssetFeeData",
+    "inputs": [
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "asset",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "feeFactor",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "accruedFee",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "normAccruedFee",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getAssetGroupData",
+    "inputs": [
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "asset",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "group",
+        "type": "uint8",
+        "internalType": "uint8"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "totalScaledCrossBorrow",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "totalCrossBorrow",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "totalScaledIsolateBorrow",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "totalIsolateBorrow",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "borrowRate",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "borrowIndex",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "rateModel",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getAssetGroupList",
+    "inputs": [
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "asset",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getAssetLendingConfig",
+    "inputs": [
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "asset",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "classGroup",
+        "type": "uint8",
+        "internalType": "uint8"
+      },
+      {
+        "name": "feeFactor",
+        "type": "uint16",
+        "internalType": "uint16"
+      },
+      {
+        "name": "collateralFactor",
+        "type": "uint16",
+        "internalType": "uint16"
+      },
+      {
+        "name": "liquidationThreshold",
+        "type": "uint16",
+        "internalType": "uint16"
+      },
+      {
+        "name": "liquidationBonus",
+        "type": "uint16",
+        "internalType": "uint16"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getAssetSupplyData",
+    "inputs": [
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "asset",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "totalScaledCrossSupply",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "totalCrossSupply",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "totalScaledIsolateSupply",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "totalIsolateSupply",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "availableSupply",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "supplyRate",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "supplyIndex",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "lastUpdateTimestamp",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getERC721Delegations",
+    "inputs": [
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "nftAsset",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "tokenIds",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address[][]",
+        "internalType": "address[][]"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getERC721TokenData",
+    "inputs": [
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "asset",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "tokenId",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "",
+        "type": "uint8",
+        "internalType": "uint8"
+      },
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getIsolateAuctionData",
+    "inputs": [
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "nftAsset",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "tokenId",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "bidStartTimestamp",
+        "type": "uint40",
+        "internalType": "uint40"
+      },
+      {
+        "name": "bidEndTimestamp",
+        "type": "uint40",
+        "internalType": "uint40"
+      },
+      {
+        "name": "firstBidder",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "lastBidder",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "bidAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "bidFine",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "redeemAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getIsolateAuctionDataList",
+    "inputs": [
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "nftAssets",
+        "type": "address[]",
+        "internalType": "address[]"
+      },
+      {
+        "name": "tokenIds",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "bidStartTimestamps",
+        "type": "uint40[]",
+        "internalType": "uint40[]"
+      },
+      {
+        "name": "bidEndTimestamps",
+        "type": "uint40[]",
+        "internalType": "uint40[]"
+      },
+      {
+        "name": "firstBidders",
+        "type": "address[]",
+        "internalType": "address[]"
+      },
+      {
+        "name": "lastBidders",
+        "type": "address[]",
+        "internalType": "address[]"
+      },
+      {
+        "name": "bidAmounts",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      },
+      {
+        "name": "bidFines",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      },
+      {
+        "name": "redeemAmounts",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getIsolateCollateralData",
+    "inputs": [
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "nftAsset",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "tokenId",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "debtAsset",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "totalCollateral",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "totalBorrow",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "availableBorrow",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "healthFactor",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getIsolateCollateralDataList",
+    "inputs": [
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "nftAssets",
+        "type": "address[]",
+        "internalType": "address[]"
+      },
+      {
+        "name": "tokenIds",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      },
+      {
+        "name": "debtAssets",
+        "type": "address[]",
+        "internalType": "address[]"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "totalCollaterals",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      },
+      {
+        "name": "totalBorrows",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      },
+      {
+        "name": "availableBorrows",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      },
+      {
+        "name": "healthFactors",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getIsolateLoanData",
+    "inputs": [
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "nftAsset",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "tokenId",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "reserveAsset",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "scaledAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "borrowAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "reserveGroup",
+        "type": "uint8",
+        "internalType": "uint8"
+      },
+      {
+        "name": "loanStatus",
+        "type": "uint8",
+        "internalType": "uint8"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getIsolateLoanDataList",
+    "inputs": [
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "nftAssets",
+        "type": "address[]",
+        "internalType": "address[]"
+      },
+      {
+        "name": "tokenIds",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "reserveAssets",
+        "type": "address[]",
+        "internalType": "address[]"
+      },
+      {
+        "name": "scaledAmounts",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      },
+      {
+        "name": "borrowAmounts",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      },
+      {
+        "name": "reserveGroups",
+        "type": "uint8[]",
+        "internalType": "uint8[]"
+      },
+      {
+        "name": "loanStatuses",
+        "type": "uint8[]",
+        "internalType": "uint8[]"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getPoolAssetList",
+    "inputs": [
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address[]",
+        "internalType": "address[]"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getPoolConfigFlag",
+    "inputs": [
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "isPaused",
+        "type": "bool",
+        "internalType": "bool"
+      },
+      {
+        "name": "isYieldEnabled",
+        "type": "bool",
+        "internalType": "bool"
+      },
+      {
+        "name": "isYieldPaused",
+        "type": "bool",
+        "internalType": "bool"
+      },
+      {
+        "name": "yieldGroup",
+        "type": "uint8",
+        "internalType": "uint8"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getPoolGroupList",
+    "inputs": [
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getPoolList",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getPoolMaxAssetNumber",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "pure"
+  },
+  {
+    "type": "function",
+    "name": "getPoolMaxGroupNumber",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "pure"
+  },
+  {
+    "type": "function",
+    "name": "getPoolName",
+    "inputs": [
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getUserAccountData",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "totalCollateralInBase",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "totalBorrowInBase",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "availableBorrowInBase",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "avgLtv",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "avgLiquidationThreshold",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "healthFactor",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getUserAccountDataForCalculation",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "calcType",
+        "type": "uint8",
+        "internalType": "uint8"
+      },
+      {
+        "name": "asset",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "totalCollateralInBase",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "totalBorrowInBase",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "availableBorrowInBase",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "avgLtv",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "avgLiquidationThreshold",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "healthFactor",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getUserAccountGroupData",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "groupsIds",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      },
+      {
+        "name": "groupsCollateralInBase",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      },
+      {
+        "name": "groupsBorrowInBase",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      },
+      {
+        "name": "groupsAvailableBorrowInBase",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getUserAssetData",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "asset",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "totalCrossSupply",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "totalIsolateSupply",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "totalCrossBorrow",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "totalIsolateBorrow",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getUserAssetGroupData",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "asset",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "groupId",
+        "type": "uint8",
+        "internalType": "uint8"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "totalScaledCrossBorrow",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "totalCrossBorrow",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "totalScaledIsolateBorrow",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "totalIsolateBorrow",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getUserAssetScaledData",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "asset",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "totalScaledCrossSupply",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "totalScaledIsolateSupply",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "totalScaledCrossBorrow",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "totalScaledIsolateBorrow",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getYieldERC20BorrowBalance",
+    "inputs": [
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "asset",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "staker",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "isApprovedForAll",
+    "inputs": [
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "account",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "asset",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "operator",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "moduleGitCommit",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "moduleId",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "onERC721Received",
+    "inputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes4",
+        "internalType": "bytes4"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "paused",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "event",
+    "name": "Paused",
+    "inputs": [
+      {
+        "name": "account",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "Unpaused",
+    "inputs": [
+      {
+        "name": "account",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  }
+]

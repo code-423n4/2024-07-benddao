@@ -1,0 +1,17 @@
+artifacts
+cache
+node_modules
+types
+typechain-types
+deployments
+temp-artifacts
+dist
+Certora
+*.json
+CHANGELOG.md
+.prettierignore
+.solcover.js
+forge-cache
+coverage
+out
+lib

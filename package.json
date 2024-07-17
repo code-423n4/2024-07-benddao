@@ -1,0 +1,61 @@
+{
+  "name": "bend-v2",
+  "version": "1.0.0",
+  "description": "BendDAO Protocol v2 smart contracts",
+  "main": "index.js",
+  "scripts": {
+    "run-env": "npm i && tail -f /dev/null",
+    "hardhat": "hardhat",
+    "clean": "npm run ci:clean",
+    "compile": "npm run compile:forge",
+    "compile:forge": "forge compile",
+    "compile:forge:clean": "npm run ci:clean && npm run compile:forge",
+    "compile:hardhat": "SKIP_LOAD=true hardhat compile",
+    "compile:hardhat:clean": "npm run ci:clean && npm run compile",
+    "prettier:check": "prettier -c --plugin=prettier-plugin-solidity .",
+    "prettier:write": "prettier -w --plugin=prettier-plugin-solidity .",
+    "update-abis": "npm run compile && bash ./script/extractABI.sh",
+    "gas-report": "forge test --gas-report",
+    "size": "forge build --sizes",
+    "slither": "slither ./src",
+    "coverage": "npm run coverage:summary",
+    "coverage:summary": "forge coverage --report summary",
+    "coverage:lcov": "forge coverage --report lcov && lcov --ignore-errors inconsistent --remove lcov.info -o lcov.info 'test/*'",
+    "coverage:html": "npm run coverage:lcov && genhtml --ignore-errors inconsistent,corrupt lcov.info -o coverage",
+    "test:hardhat": ". ./setup-env.sh && TS_NODE_TRANSPILE_ONLY=1 hardhat test test/hardhat/*.spec.ts",
+    "test:forge": "forge test -vvv",
+    "test": "npm run test:forge",
+    "test:contract": "forge test --match-contract ${TEST_CONTRACT} -vvvv",
+    "ci:test": ". ./setup-env.sh && npm run test:forge && npm run test:hardhat",
+    "ci:clean": "rm -rf ./artifacts ./out ./cache ./forge-cache ./types ./typechain-types ./temp-artifacts",
+    "deploy:sepolia:full": ". ./setup-env.sh && forge script ./script/DeployPoolFull.s.sol -vvvvv --private-key ${PRIVATE_KEY} --etherscan-api-key ${ETHERSCAN_KEY} --rpc-url sepolia --broadcast --slow --verify",
+    "config:sepolia:init": ". ./setup-env.sh && forge script ./script/InitConfigSepolia.s.sol -vvvvv --private-key ${PRIVATE_KEY} --etherscan-api-key ${ETHERSCAN_KEY} --rpc-url sepolia --broadcast --slow --verify",
+    "prepare": "husky install",
+    "build": "tsc --project tsconfig.json",
+    "prepublish": "npm run compile && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://thorseldon@github.com/BendDAO/bend-v2.git"
+  },
+  "author": "BendDAO",
+  "license": "BUSL-1.1",
+  "bugs": {
+    "url": "https://github.com/BendDAO/bend-v2/issues"
+  },
+  "homepage": "https://github.com/BendDAO/bend-v2#readme",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "dotenv": "16.3.1",
+    "hardhat": "^2.18.0",
+    "hardhat-preprocessor": "0.1.5",
+    "husky": "9.0.11",
+    "prettier": "3.0.3",
+    "prettier-plugin-solidity": "1.1.3"
+  },
+  "dependencies": {
+    "@chainlink/contracts": "0.8.0",
+    "@openzeppelin/contracts": "4.9.6",
+    "@openzeppelin/contracts-upgradeable": "4.9.6"
+  }
+}

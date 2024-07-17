@@ -1,0 +1,42 @@
+
+node_modules
+
+# misc
+.DS_Store
+.env*
+!.env.example
+
+# Foundry files
+forge-cache
+out
+broadcast
+
+# Hardhat files
+cache
+artifacts
+temp-artifacts
+node_modules
+dist/
+build/
+.vscode
+.idea
+/types
+typechain
+typechain-types
+contracts/hardhat-dependency-compiler
+
+# Coverage files
+lcov.info
+coverage
+.coverage_artifacts
+.coverage_cache
+.coverage_contracts
+coverage.json
+
+# Certora
+.certora*
+.certora*.json
+**.last_conf*
+certora-logs
+certora_debug_log.txt
+resource_errors.json

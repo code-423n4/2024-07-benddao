@@ -1,0 +1,13 @@
+{
+  "chainId": 11155111,
+  "rpcAlias": "sepolia",
+  "forkBlockNumber": 5421960,
+  "treasury": "0x0e9d6B6B7CEfc88f12ef214eeC5A3DAddB0dD3FD",
+  "wrappedNative": "0xfFf9976782d46CC05630D1f6eBAb18b2324d6B14",
+  "ProxyAdmin": "0xeF7D77D28694497130119F1Caf5c4fae229a9CCc",
+  "AddressProvider": "0x1ee799adcF1A1A0fd9F7E8fD29dB6e816374AE29",
+  "ACLAdmin": "0x99AcDAB13365e4CFcAa139A31de7CF8C80Ac5fb1",
+  "ACLManager": "0xe4aE7754b99b470EedEfE7C403c88eE8e5062C59",
+  "PriceOracle": "0xAc4177f05F2E57d9836Fe895b816a03CDE377905",
+  "PoolManager": "0xE16d9FB95eed698ee2384050a2C15BF1DdBA3E6C"
+}
