@@ -43,7 +43,7 @@ _Note for C4 wardens: Anything included in this `Automated Findings / Publicly K
 ## Links
 
 - **Previous audits:**  None
-- **Documentation:** https://docs.benddao.xyz/portal/v/v2
+- **Documentation:** https://github.com/BendDAO/bend-gitbook-portal-v2
 - **Website:** https://www.benddao.xyz/en/
 - **X/Twitter:** https://twitter.com/BendDAO
 - **Discord:** https://discord.gg/benddao
