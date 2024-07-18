@@ -42,8 +42,8 @@ _Note for C4 wardens: Anything included in this `Automated Findings / Publicly K
 
 ## Links
 
-- **Previous audits:**  [For V1](https://docs.benddao.xyz/portal/risk/security-and-audits)
-- **Documentation:** https://docs.benddao.xyz/developers
+- **Previous audits:**  None
+- **Documentation:** https://docs.benddao.xyz/portal/v/v2
 - **Website:** https://www.benddao.xyz/en/
 - **X/Twitter:** https://twitter.com/BendDAO
 - **Discord:** https://discord.gg/benddao
