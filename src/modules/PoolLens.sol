@@ -11,6 +11,7 @@ import {InputTypes} from '../libraries/types/InputTypes.sol';
 import {StorageSlot} from '../libraries/logic/StorageSlot.sol';
 import {VaultLogic} from '../libraries/logic/VaultLogic.sol';
 import {QueryLogic} from '../libraries/logic/QueryLogic.sol';
+import {LiquidationLogic} from '../libraries/logic/LiquidationLogic.sol';
 
 /// @notice Pool Query Service Logic
 contract PoolLens is BaseModule {
@@ -42,7 +43,7 @@ contract PoolLens is BaseModule {
     return QueryLogic.getPoolGroupList(poolId);
   }
 
-  function getPoolAssetList(uint32 poolId) public view returns (address[] memory) {
+  function getPoolAssetList(uint32 poolId) public view returns (address[] memory assets, uint8[] memory types) {
     return QueryLogic.getPoolAssetList(poolId);
   }
 
@@ -188,6 +189,27 @@ contract PoolLens is BaseModule {
     )
   {
     return QueryLogic.getUserAccountDataForCalculation(user, poolId, calcType, asset, amount);
+  }
+
+  function getUserCrossLiquidateData(
+    uint32 poolId,
+    address borrower,
+    address collateralAsset,
+    uint256 collateralAmount,
+    address debtAsset,
+    uint256 debtAmount
+  ) public view returns (uint256 actualCollateralToLiquidate, uint256 actualDebtToLiquidate) {
+    return
+      LiquidationLogic.viewGetUserCrossLiquidateData(
+        InputTypes.ViewGetUserCrossLiquidateDataParams({
+          poolId: poolId,
+          borrower: borrower,
+          collateralAsset: collateralAsset,
+          collateralAmount: collateralAmount,
+          debtAsset: debtAsset,
+          debtAmount: debtAmount
+        })
+      );
   }
 
   function getUserAssetData(
@@ -395,6 +417,20 @@ contract PoolLens is BaseModule {
     uint256 tokenId
   ) public view returns (address, uint8, address) {
     return QueryLogic.getERC721TokenData(poolId, asset, tokenId);
+  }
+
+  function getERC721TokenDataList(
+    uint32 poolId,
+    address[] calldata assets,
+    uint256[] calldata tokenIds
+  ) public view returns (address[] memory owners, uint8[] memory supplyModes, address[] memory lockerAddrs) {
+    owners = new address[](assets.length);
+    supplyModes = new uint8[](assets.length);
+    lockerAddrs = new address[](assets.length);
+
+    for (uint i = 0; i < assets.length; i++) {
+      (owners[i], supplyModes[i], lockerAddrs[i]) = QueryLogic.getERC721TokenData(poolId, assets[i], tokenIds[i]);
+    }
   }
 
   function getERC721Delegations(
