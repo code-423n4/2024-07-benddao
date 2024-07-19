@@ -49,6 +49,17 @@ contract TestIntCrossLiquidateERC721 is TestWithCrossAction {
     TestUserAccountData memory accountDataAfterBorrow = getUserAccountData(address(tsBorrower1), tsCommonPoolId);
     assertLt(accountDataAfterBorrow.healthFactor, 1e18, 'ACC:healthFactor');
 
+    (uint256 actualCollateralToLiquidate, uint256 actualDebtToLiquidate) = tsPoolLens.getUserCrossLiquidateData(
+      tsCommonPoolId,
+      address(tsBorrower1),
+      address(tsBAYC),
+      1,
+      address(tsUSDT),
+      0
+    );
+    assertGt(actualDebtToLiquidate, 0, 'actualDebtToLiquidate');
+    assertGt(actualCollateralToLiquidate, 0, 'actualCollateralToLiquidate');
+
     // liquidate some eth
     tsLiquidator1.approveERC20(address(tsUSDT), type(uint256).max);
 

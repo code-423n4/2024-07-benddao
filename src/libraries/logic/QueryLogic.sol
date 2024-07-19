@@ -80,11 +80,17 @@ library QueryLogic {
     return groupIds;
   }
 
-  function getPoolAssetList(uint32 poolId) internal view returns (address[] memory) {
+  function getPoolAssetList(uint32 poolId) internal view returns (address[] memory assets, uint8[] memory types) {
     DataTypes.PoolStorage storage ps = StorageSlot.getPoolStorage();
     DataTypes.PoolData storage poolData = ps.poolLookup[poolId];
 
-    return poolData.assetList.values();
+    assets = poolData.assetList.values();
+    types = new uint8[](assets.length);
+
+    for (uint i = 0; i < assets.length; i++) {
+      DataTypes.AssetData storage assetData = poolData.assetLookup[assets[i]];
+      types[i] = assetData.assetType;
+    }
   }
 
   function getAssetGroupList(uint32 poolId, address asset) internal view returns (uint256[] memory) {

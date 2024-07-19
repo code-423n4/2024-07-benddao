@@ -138,9 +138,11 @@ contract TestPoolManagerConfig is TestWithSetup {
     tsConfigurator.addAssetERC20(poolId, address(tsUSDT));
     tsConfigurator.addAssetERC20(poolId, address(tsWETH));
 
-    address[] memory retAssets1 = tsPoolLens.getPoolAssetList(poolId);
+    (address[] memory retAssets1, uint8[] memory retTypes1) = tsPoolLens.getPoolAssetList(poolId);
     assertEq(retAssets1.length, 3, 'retAssets1 length not match');
     assertEq(retAssets1[0], address(tsDAI), 'retAssets1 index 0 not match');
+    assertEq(retTypes1.length, 3, 'retTypes1 length not match');
+    assertEq(retTypes1[0], Constants.ASSET_TYPE_ERC20, 'retTypes1 index 0 not match');
 
     tsConfigurator.removeAssetERC20(poolId, address(tsDAI));
     tsConfigurator.removeAssetERC20(poolId, address(tsUSDT));
@@ -161,9 +163,11 @@ contract TestPoolManagerConfig is TestWithSetup {
     tsConfigurator.addAssetERC721(poolId, address(tsBAYC));
     tsConfigurator.addAssetERC721(poolId, address(tsMAYC));
 
-    address[] memory retAssets1 = tsPoolLens.getPoolAssetList(poolId);
+    (address[] memory retAssets1, uint8[] memory retTypes1) = tsPoolLens.getPoolAssetList(poolId);
     assertEq(retAssets1.length, 3, 'retAssets1 length not match');
     assertEq(retAssets1[0], address(tsWPUNK), 'retAssets1 index 0 not match');
+    assertEq(retTypes1.length, 3, 'retTypes1 length not match');
+    assertEq(retTypes1[0], Constants.ASSET_TYPE_ERC721, 'retTypes1 index 0 not match');
 
     tsConfigurator.removeAssetERC721(poolId, address(tsWPUNK));
     tsConfigurator.removeAssetERC721(poolId, address(tsBAYC));
