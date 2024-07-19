@@ -109,6 +109,10 @@ library Errors {
   string public constant LIQUIDATE_REPAY_DEBT_FAILED = '410';
   string public constant ORACLE_PRICE_IS_STALE = '411';
   string public constant LIQUIDATION_EXCEED_MAX_TOKEN_NUM = '412';
+  string public constant USER_COLLATERAL_SUPPLY_ZERO = '413';
+  string public constant ACTUAL_COLLATERAL_TO_LIQUIDATE_ZERO = '414';
+  string public constant ACTUAL_DEBT_TO_LIQUIDATE_ZERO = '415';
+  string public constant USER_DEBT_BORROWED_ZERO = '416';
 
   string public constant YIELD_EXCEED_ASSET_CAP_LIMIT = '500';
   string public constant YIELD_EXCEED_STAKER_CAP_LIMIT = '501';

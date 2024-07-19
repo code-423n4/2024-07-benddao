@@ -422,6 +422,45 @@
   },
   {
     "type": "function",
+    "name": "getERC721TokenDataList",
+    "inputs": [
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "assets",
+        "type": "address[]",
+        "internalType": "address[]"
+      },
+      {
+        "name": "tokenIds",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "owners",
+        "type": "address[]",
+        "internalType": "address[]"
+      },
+      {
+        "name": "supplyModes",
+        "type": "uint8[]",
+        "internalType": "uint8[]"
+      },
+      {
+        "name": "lockerAddrs",
+        "type": "address[]",
+        "internalType": "address[]"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
     "name": "getIsolateAuctionData",
     "inputs": [
       {
@@ -746,9 +785,14 @@
     ],
     "outputs": [
       {
-        "name": "",
+        "name": "assets",
         "type": "address[]",
         "internalType": "address[]"
+      },
+      {
+        "name": "types",
+        "type": "uint8[]",
+        "internalType": "uint8[]"
       }
     ],
     "stateMutability": "view"
@@ -1147,6 +1191,55 @@
       },
       {
         "name": "totalScaledIsolateBorrow",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getUserCrossLiquidateData",
+    "inputs": [
+      {
+        "name": "poolId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "borrower",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "collateralAsset",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "collateralAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "debtAsset",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "debtAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "actualCollateralToLiquidate",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "actualDebtToLiquidate",
         "type": "uint256",
         "internalType": "uint256"
       }

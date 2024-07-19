@@ -87,12 +87,14 @@ library LiquidationLogic {
       params,
       vars.userAccountResult.healthFactor
     );
+    require(vars.userTotalDebt > 0, Errors.USER_DEBT_BORROWED_ZERO);
 
     vars.userCollateralBalance = VaultLogic.erc20GetUserCrossSupply(
       collateralAssetData,
       params.borrower,
       collateralAssetData.supplyIndex
     );
+    require(vars.userCollateralBalance > 0, Errors.USER_COLLATERAL_SUPPLY_ZERO);
 
     (vars.actualCollateralToLiquidate, vars.actualDebtToLiquidate) = _calculateAvailableERC20CollateralToLiquidate(
       collateralAssetData,
@@ -101,6 +103,8 @@ library LiquidationLogic {
       vars.userCollateralBalance,
       IPriceOracleGetter(vars.priceOracle)
     );
+    require(vars.actualCollateralToLiquidate > 0, Errors.ACTUAL_COLLATERAL_TO_LIQUIDATE_ZERO);
+    require(vars.actualDebtToLiquidate > 0, Errors.ACTUAL_DEBT_TO_LIQUIDATE_ZERO);
 
     vars.remainDebtToLiquidate = _repayUserERC20Debt(
       poolData,
@@ -192,6 +196,7 @@ library LiquidationLogic {
     );
 
     vars.userCollateralBalance = VaultLogic.erc721GetUserCrossSupply(collateralAssetData, params.borrower);
+    require(vars.userCollateralBalance > 0, Errors.USER_COLLATERAL_SUPPLY_ZERO);
 
     // the liquidated debt amount will be decided by the liquidated collateral
     (vars.actualCollateralToLiquidate, vars.actualDebtToLiquidate) = _calculateDebtAmountFromERC721Collateral(
@@ -201,6 +206,8 @@ library LiquidationLogic {
       vars,
       IPriceOracleGetter(vars.priceOracle)
     );
+    require(vars.actualCollateralToLiquidate > 0, Errors.ACTUAL_COLLATERAL_TO_LIQUIDATE_ZERO);
+    require(vars.actualDebtToLiquidate > 0, Errors.ACTUAL_DEBT_TO_LIQUIDATE_ZERO);
 
     // try to repay debt for the user, the liquidated debt amount may less than user total debt
     vars.remainDebtToLiquidate = _repayUserERC20Debt(
@@ -503,5 +510,90 @@ library LiquidationLogic {
     vars.debtAmountNeeded = (vars.collateralTotalValue * vars.debtAssetUnit) / vars.debtAssetPrice;
 
     return (vars.collateralTotalValue, vars.debtAmountNeeded);
+  }
+
+  struct GetUserAccountLiquidationDataLocalVars {
+    address priceOracle;
+    uint256 userCollateralBalance;
+    uint256 userTotalDebt;
+    uint256 actualDebtToLiquidate;
+    uint256 actualCollateralToLiquidate;
+    ResultTypes.UserAccountResult userAccountResult;
+  }
+
+  /**
+   * @notice Function to query user liquidate data if its Health Factor drops below 1.
+   * @dev It's only used in FrontEnd UI, Do not use it in contract!
+   */
+  function viewGetUserCrossLiquidateData(
+    InputTypes.ViewGetUserCrossLiquidateDataParams memory getDataParams
+  ) internal view returns (uint256 actualCollateralToLiquidate, uint256 actualDebtToLiquidate) {
+    GetUserAccountLiquidationDataLocalVars memory vars;
+
+    DataTypes.PoolStorage storage ps = StorageSlot.getPoolStorage();
+    vars.priceOracle = IAddressProvider(ps.addressProvider).getPriceOracle();
+
+    DataTypes.PoolData storage poolData = ps.poolLookup[getDataParams.poolId];
+    DataTypes.AssetData storage collateralAssetData = poolData.assetLookup[getDataParams.collateralAsset];
+    DataTypes.AssetData storage debtAssetData = poolData.assetLookup[getDataParams.debtAsset];
+
+    vars.userAccountResult = GenericLogic.calculateUserAccountDataForLiquidate(
+      poolData,
+      getDataParams.borrower,
+      getDataParams.collateralAsset,
+      vars.priceOracle
+    );
+    if (vars.userAccountResult.healthFactor >= Constants.HEALTH_FACTOR_LIQUIDATION_THRESHOLD) {
+      return (0, 0);
+    }
+
+    if (collateralAssetData.assetType == Constants.ASSET_TYPE_ERC20) {
+      InputTypes.ExecuteCrossLiquidateERC20Params memory erc20Params;
+      erc20Params.borrower = getDataParams.borrower;
+      erc20Params.debtToCover = getDataParams.debtAmount;
+
+      (vars.userTotalDebt, vars.actualDebtToLiquidate) = _calculateUserERC20Debt(
+        poolData,
+        debtAssetData,
+        erc20Params,
+        vars.userAccountResult.healthFactor
+      );
+
+      vars.userCollateralBalance = VaultLogic.erc20GetUserCrossSupply(
+        collateralAssetData,
+        erc20Params.borrower,
+        collateralAssetData.supplyIndex
+      );
+
+      (vars.actualCollateralToLiquidate, vars.actualDebtToLiquidate) = _calculateAvailableERC20CollateralToLiquidate(
+        collateralAssetData,
+        debtAssetData,
+        vars.actualDebtToLiquidate,
+        vars.userCollateralBalance,
+        IPriceOracleGetter(vars.priceOracle)
+      );
+    } else if (collateralAssetData.assetType == Constants.ASSET_TYPE_ERC721) {
+      InputTypes.ExecuteCrossLiquidateERC721Params memory erc721Params;
+      erc721Params.borrower = getDataParams.borrower;
+      erc721Params.collateralAsset = getDataParams.collateralAsset;
+      erc721Params.collateralTokenIds = new uint256[](getDataParams.collateralAmount);
+      erc721Params.debtAsset = getDataParams.debtAsset;
+
+      vars.userCollateralBalance = VaultLogic.erc721GetUserCrossSupply(collateralAssetData, erc721Params.borrower);
+
+      LiquidateERC721LocalVars memory liqVars;
+      liqVars.userAccountResult = vars.userAccountResult;
+      liqVars.userCollateralBalance = vars.userCollateralBalance;
+
+      (vars.actualCollateralToLiquidate, vars.actualDebtToLiquidate) = _calculateDebtAmountFromERC721Collateral(
+        collateralAssetData,
+        debtAssetData,
+        erc721Params,
+        liqVars,
+        IPriceOracleGetter(vars.priceOracle)
+      );
+    }
+
+    return (vars.actualCollateralToLiquidate, vars.actualDebtToLiquidate);
   }
 }

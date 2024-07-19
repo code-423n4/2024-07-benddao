@@ -88,6 +88,15 @@ library InputTypes {
     bool supplyAsCollateral;
   }
 
+  struct ViewGetUserCrossLiquidateDataParams {
+    uint32 poolId;
+    address borrower;
+    address collateralAsset;
+    uint256 collateralAmount;
+    address debtAsset;
+    uint256 debtAmount;
+  }
+
   // Isolate Lending
 
   struct ExecuteIsolateBorrowParams {

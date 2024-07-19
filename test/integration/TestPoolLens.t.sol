@@ -172,5 +172,7 @@ contract TestPoolLens is TestWithPrepare {
     tsPoolLens.getIsolateLoanDataList(tsCommonPoolId, nftAssets, tokenIds);
 
     tsPoolLens.getIsolateAuctionDataList(tsCommonPoolId, nftAssets, tokenIds);
+
+    tsPoolLens.getERC721TokenDataList(tsCommonPoolId, nftAssets, tokenIds);
   }
 }
