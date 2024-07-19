@@ -6,7 +6,7 @@
   - Judge awards: $7500 in USDC
   - Scout awards: $500 in USDC
 - Join [C4 Discord](https://discord.gg/code4rena) to register
-- Submit findings [using the C4 form](https://code4rena.com/contests/2024-07-benddao/submit)
+- Submit findings [using the C4 form](https://code4rena.com/audits/2024-07-benddao-invitational/submit)
 - [Read our guidelines for more details](https://docs.code4rena.com/roles/wardens)
 - Starts July 19, 2024 20:00 UTC
 - Ends August 16, 2024 20:00 UTC
