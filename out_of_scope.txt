@@ -33,11 +33,7 @@
 ./src/libraries/helpers/Constants.sol
 ./src/libraries/helpers/Errors.sol
 ./src/libraries/helpers/Events.sol
-./src/libraries/helpers/KVSortUtils.sol
-./src/libraries/math/MathUtils.sol
-./src/libraries/math/PercentageMath.sol
-./src/libraries/math/ShareUtils.sol
-./src/libraries/math/WadRayMath.sol
+./src/libraries/logic/QueryLogic.sol
 ./src/modules/Installer.sol
 ./src/modules/PoolLens.sol
 ./src/oracles/IDAIPot.sol
