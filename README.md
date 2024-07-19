@@ -63,6 +63,11 @@ _Note for C4 wardens: Anything included in this `Automated Findings / Publicly K
 | /src/ACLManager.sol | 1| **** | 44 | |@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol|
 | /src/PoolManager.sol | 1| **** | 69 | |src/interfaces/IAddressProvider.sol<br>src/interfaces/IACLManager.sol<br>src/libraries/helpers/Constants.sol<br>src/libraries/helpers/Errors.sol<br>src/libraries/logic/StorageSlot.sol<br>src/libraries/types/DataTypes.sol<br>src/base/Base.sol<br>src/base/Proxy.sol|
 | /src/PriceOracle.sol | 1| **** | 89 | |@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol<br>@chainlink/contracts/src/v0.8/interfaces/AggregatorV2V3Interface.sol|
+| /src/libraries/helpers/KVSortUtils.sol | 1| **** | -- | ||
+| /src/libraries/math/MathUtils.sol | 1| **** | -- | ||
+| /src/libraries/math/PercentageMath.sol | 1| **** | -- | ||
+| /src/libraries/math/ShareUtils.sol | 1| **** | -- | ||
+| /src/libraries/math/WadRayMath.sol | 1| **** | -- | ||
 | /src/libraries/logic/BorrowLogic.sol | 1| **** | 73 | ||
 | /src/libraries/logic/ConfigureLogic.sol | 1| **** | 421 | |@openzeppelin/contracts-upgradeable/utils/structs/EnumerableSetUpgradeable.sol<br>@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol<br>@openzeppelin/contracts-upgradeable/token/ERC20/extensions/IERC20MetadataUpgradeable.sol<br>@openzeppelin/contracts-upgradeable/utils/math/SafeCastUpgradeable.sol|
 | /src/libraries/logic/FlashLoanLogic.sol | 1| **** | 88 | ||
@@ -71,7 +76,6 @@ _Note for C4 wardens: Anything included in this `Automated Findings / Publicly K
 | /src/libraries/logic/IsolateLogic.sol | 1| **** | 335 | ||
 | /src/libraries/logic/LiquidationLogic.sol | 1| **** | 308 | |@openzeppelin/contracts-upgradeable/utils/structs/EnumerableSetUpgradeable.sol|
 | /src/libraries/logic/PoolLogic.sol | 1| **** | 73 | |src/interfaces/IDelegateRegistryV2.sol|
-| /src/libraries/logic/QueryLogic.sol | 1| **** | 431 | |@openzeppelin/contracts-upgradeable/utils/structs/EnumerableSetUpgradeable.sol<br>src/interfaces/IDelegateRegistryV2.sol|
 | /src/libraries/logic/StorageSlot.sol | 1| **** | 11 | ||
 | /src/libraries/logic/SupplyLogic.sol | 1| **** | 151 | ||
 | /src/libraries/logic/ValidateLogic.sol | 1| **** | 437 | |@openzeppelin/contracts-upgradeable/utils/structs/EnumerableSetUpgradeable.sol<br>@openzeppelin/contracts-upgradeable/token/ERC721/IERC721Upgradeable.sol|
@@ -143,11 +147,7 @@ In addition to beleow, any files not in the list above is Out Of Scope.
 | ./src/libraries/helpers/Constants.sol |
 | ./src/libraries/helpers/Errors.sol |
 | ./src/libraries/helpers/Events.sol |
-| ./src/libraries/helpers/KVSortUtils.sol |
-| ./src/libraries/math/MathUtils.sol |
-| ./src/libraries/math/PercentageMath.sol |
-| ./src/libraries/math/ShareUtils.sol |
-| ./src/libraries/math/WadRayMath.sol |
+| ./src/libraries/logic/QueryLogic.sol |
 | ./src/modules/Installer.sol |
 | ./src/modules/PoolLens.sol |
 | ./src/oracles/IDAIPot.sol |
